@@ -41,7 +41,7 @@ root = [8, 1, 5, N, 7, 10, 6, N, 10, 6]
 
 #### Solution 1 (C++)
 
-- **Submitted:** 2026-09-30 18:24:42
+- **Submitted:** 2026-09-30 19:27:58
 - **Status:** Correct
 - **Marks:** 0
 
@@ -62,46 +62,45 @@ class Node {
 class Solution {
   public:
        vector<int> inOrder(Node* root) {
-           vector<int>ans;
-                while (root)
-                {
-                    // root ka left agar exist nhi krta hai to :
-                    if(!root->left)
-                    {
-                        ans.push_back(root->data);
-                        root = root->right;
-                    }
-                    else
-                    {
-                        Node *curr = root->left;
-                        // Pointer ko move krayga jab tak curr->right NULL ya root ka equal nhi ho jata:
-                        while (curr->right&&curr->right!=root)
-                        {
-                            curr= curr->right;
-                        }
-                        // agar curr->right==NULL ho jata hai means that leftsubtree is not traversed:
-                        if(curr->right==NULL)
-                        {
-                           curr->right = root;
-                           root = root->left;
-                        }
-                        // agar curr->right==root means  leftsubtree is traversed:
-                        else if(curr->right==root)
-                        {
-                            ans.push_back(root->data);
-                            curr->right = NULL;
-                            root = root->right;
-                        } 
-                    }
-                }
-                return ans;
+          vector<int>ans;
+          stack<Node*>st1;
+          stack<bool> visited;
+          st1.push(root);
+          visited.push(0);
+          while(!st1.empty())
+          {
+              Node *temp = st1.top();
+              st1.pop();
+              bool flag = visited.top();
+              visited.pop();
+              if(flag==0)
+              {
+                  if(temp->right)
+                  {
+                      st1.push(temp->right);
+                      visited.push(0);
+                  }
+                  st1.push(temp);
+                  visited.push(1);
+                  if(temp->left)
+                  {
+                      st1.push(temp->left);
+                      visited.push(0);
+                  }
+              }
+              else
+              {
+                  ans.push_back(temp->data);
+              }
+          }
+          return ans;
     }
 };
 ```
 
 #### Solution 2 (C++)
 
-- **Submitted:** 2026-09-30 18:24:13
+- **Submitted:** 2026-09-30 18:24:42
 - **Status:** Correct
 - **Marks:** 0
 
@@ -161,7 +160,7 @@ class Solution {
 
 #### Solution 3 (C++)
 
-- **Submitted:** 2026-09-28 21:55:25
+- **Submitted:** 2026-09-30 18:24:13
 - **Status:** Correct
 - **Marks:** 0
 
@@ -221,7 +220,7 @@ class Solution {
 
 #### Solution 4 (C++)
 
-- **Submitted:** 2026-09-28 21:42:44
+- **Submitted:** 2026-09-28 21:55:25
 - **Status:** Correct
 - **Marks:** 0
 
@@ -281,7 +280,7 @@ class Solution {
 
 #### Solution 5 (C++)
 
-- **Submitted:** 2026-08-27 09:23:21
+- **Submitted:** 2026-09-28 21:42:44
 - **Status:** Correct
 - **Marks:** 0
 
@@ -339,4 +338,4 @@ class Solution {
 };
 ```
 
-*Generated on: 9/30/2026, 6:25:22 PM*
+*Generated on: 9/30/2026, 7:28:37 PM*
