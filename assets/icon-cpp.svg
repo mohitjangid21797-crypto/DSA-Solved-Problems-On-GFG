@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="150" height="190" viewBox="0 0 150 190" role="img" aria-label="GeeksforGeeks">
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="190" viewBox="0 0 150 190" role="img" aria-label="C++">
 <defs>
-<linearGradient id="t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fbe5e"/><stop offset="1" stop-color="#319449"/></linearGradient>
-<linearGradient id="l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#267339"/><stop offset="1" stop-color="#194d26"/></linearGradient>
-<linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d572b"/><stop offset="1" stop-color="#11351a"/></linearGradient>
+<linearGradient id="t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0078d2"/><stop offset="1" stop-color="#005da3"/></linearGradient>
+<linearGradient id="l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00487f"/><stop offset="1" stop-color="#003055"/></linearGradient>
+<linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#003760"/><stop offset="1" stop-color="#00213b"/></linearGradient>
 <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
 <filter id="gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <style>
-.cube{animation:float 3.6s ease-in-out 0.0s infinite}
+.cube{animation:float 3.6s ease-in-out 0.35s infinite}
 .lab{font:600 14px 'Segoe UI',Helvetica,Arial,sans-serif;fill:#8b98a9}
 .gl{font:900 27px 'Segoe UI',Helvetica,Arial,sans-serif;fill:#fff}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @media (prefers-reduced-motion:reduce){.cube{animation:none}}
 </style>
 </defs>
-<ellipse cx="75" cy="166" rx="46" ry="9" fill="url(#sh)"><animate attributeName="rx" values="46;36;46" dur="3.6s" begin="0.0s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="75" cy="166" rx="46" ry="9" fill="url(#sh)"><animate attributeName="rx" values="46;36;46" dur="3.6s" begin="0.35s" repeatCount="indefinite"/></ellipse>
 <g class="cube">
 <polygon points="23,68 75,98 75,156 23,126" fill="url(#l)"/>
 <polygon points="75,98 127,68 127,126 75,156" fill="url(#r)"/>
@@ -21,7 +21,7 @@
 <polyline points="23,68 75,38 127,68" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.2"/>
 <polyline points="23,68 75,98 127,68" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"/>
 <line x1="75" y1="98" x2="75" y2="156" stroke="#fff" stroke-opacity=".2"/>
-<g transform="matrix(0.9620,0.5550,-0.9620,0.5550,75,68)"><text class="gl" x="0" y="0" text-anchor="middle" dominant-baseline="central" transform="rotate(0)">GfG</text></g>
+<g transform="matrix(0.9620,0.5550,-0.9620,0.5550,75,68)"><text class="gl" x="0" y="0" text-anchor="middle" dominant-baseline="central" transform="rotate(0)">C++</text></g>
 </g>
-<text class="lab" x="75" y="182" text-anchor="middle">GeeksforGeeks</text>
+<text class="lab" x="75" y="182" text-anchor="middle">C++</text>
 </svg>
