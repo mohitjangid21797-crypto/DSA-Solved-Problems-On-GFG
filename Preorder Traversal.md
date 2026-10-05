@@ -39,6 +39,165 @@ root = [6, 3, 2, N, 1, 2, N]
 
 #### Solution 1 (C++)
 
+- **Submitted:** 2026-10-05 15:58:44
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Structure of Tree Node
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = nullptr;
+        right = nullptr;
+    }
+};*/
+
+class Solution {
+  public:
+    vector<int> preOrder(Node* root) {
+        // code here
+        vector<int>ans;
+        while(root)
+        {
+            if(root->left==NULL)
+        {
+            ans.push_back(root->data);
+            root = root->right;
+        }
+        else
+        {
+            Node *curr = root->left;
+            while(curr->right!=NULL&&curr->right!=root)
+            {
+                curr = curr->right;
+            }
+            if(curr->right==NULL)
+            {
+                curr->right = root;
+                ans.push_back(root->data);
+                root = root->left;
+            }
+            else if(curr->right==root)
+            {
+                curr->right = NULL;
+                root = root->right;
+            }
+        }
+        }
+        return ans;
+    }
+};
+```
+
+#### Solution 2 (C++)
+
+- **Submitted:** 2026-10-05 15:58:25
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Structure of Tree Node
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = nullptr;
+        right = nullptr;
+    }
+};*/
+
+class Solution {
+  public:
+    vector<int> preOrder(Node* root) {
+        // code here
+        vector<int>ans;
+        while(root)
+        {
+            if(root->left==NULL)
+        {
+            ans.push_back(root->data);
+            root = root->right;
+        }
+        else
+        {
+            Node *curr = root->left;
+            while(curr->right!=NULL&&curr->right!=root)
+            {
+                curr = curr->right;
+            }
+            if(curr->right==NULL)
+            {
+                curr->right = root;
+                ans.push_back(root->data);
+                root = root->left;
+            }
+            else if(curr->right==root)
+            {
+                curr->right = NULL;
+                root = root->right;
+            }
+        }
+        }
+        return ans;
+    }
+};
+```
+
+#### Solution 3 (C++)
+
+- **Submitted:** 2026-09-30 18:27:29
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Structure of Tree Node
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = nullptr;
+        right = nullptr;
+    }
+};*/
+
+class Solution {
+  public:
+    vector<int> preOrder(Node* root) {
+       vector<int>ans;
+       stack<Node*>st;
+       st.push(root);
+       while(!st.empty())
+       {
+           Node *temp = st.top();
+           st.pop();
+           ans.push_back(temp->data);
+           if(temp->right)
+           st.push(temp->right);
+           if(temp->left)
+           st.push(temp->left);
+       }
+       return ans;
+        
+    }
+};
+```
+
+#### Solution 4 (C++)
+
 - **Submitted:** 2026-09-30 18:06:49
 - **Status:** Correct
 - **Marks:** 0
@@ -80,7 +239,7 @@ class Solution {
 };
 ```
 
-#### Solution 2 (C++)
+#### Solution 5 (C++)
 
 - **Submitted:** 2026-09-28 21:56:58
 - **Status:** Correct
@@ -138,184 +297,4 @@ class Solution {
 };
 ```
 
-#### Solution 3 (C++)
-
-- **Submitted:** 2026-09-28 21:54:07
-- **Status:** Correct
-- **Marks:** 0
-
-```cpp
-/* Structure of Tree Node
-class Node {
-  public:
-    int data;
-    Node* left;
-    Node* right;
-
-    Node(int val) {
-        data = val;
-        left = nullptr;
-        right = nullptr;
-    }
-};*/
-
-class Solution {
-  public:
-    vector<int> preOrder(Node* root) {
-       vector<int>ans;
-            while (root)
-            {
-                if(!root->left)
-                {
-                    ans.push_back(root->data);
-                    root = root->right;
-                }
-                else
-                {
-                    Node *curr = root->left;
-                    while(curr->right&&curr->right!=root)
-                    {
-                        curr = curr->right;
-                    }
-                    if(curr->right==NULL)
-                    {
-                        ans.push_back(root->data);
-                        curr->right = root;
-                        root = root->left;
-                    }
-                    else if(curr->right==root)
-                    {
-                        curr->right = NULL;
-                        root = root->right;
-                    }
-                }
-            }
-            return ans;  // code here
-        
-    }
-};
-```
-
-#### Solution 4 (C++)
-
-- **Submitted:** 2026-08-27 09:34:06
-- **Status:** Correct
-- **Marks:** 0
-
-```cpp
-/* Structure of Tree Node
-class Node {
-  public:
-    int data;
-    Node* left;
-    Node* right;
-
-    Node(int val) {
-        data = val;
-        left = nullptr;
-        right = nullptr;
-    }
-};*/
-
-class Solution {
-  public:
-    vector<int> preOrder(Node* root) {
-       vector<int>ans;
-            while (root)
-            {
-                if(!root->left)
-                {
-                    ans.push_back(root->data);
-                    root = root->right;
-                }
-                else
-                {
-                    Node *curr = root->left;
-                    while(curr->right&&curr->right!=root)
-                    {
-                        curr = curr->right;
-                    }
-                    if(curr->right==NULL)
-                    {
-                        ans.push_back(root->data);
-                        curr->right = root;
-                        root = root->left;
-                    }
-                    else if(curr->right==root)
-                    {
-                        curr->right = NULL;
-                        root = root->right;
-                    }
-                }
-            }
-            return ans;  // code here
-        
-    }
-};
-```
-
-#### Solution 5 (C++)
-
-- **Submitted:** 2026-08-25 09:23:26
-- **Status:** Correct
-- **Marks:** 0
-
-```cpp
-/* Structure of Tree Node
-class Node {
-  public:
-    int data;
-    Node* left;
-    Node* right;
-
-    Node(int val) {
-        data = val;
-        left = nullptr;
-        right = nullptr;
-    }
-};*/
-
-class Solution {
-  public:
-    vector<int> preOrder(Node* root) {
-        // code here
-        vector<int>ans;
-            while(root)
-            {
-            // Root ka left exist nhi krta hai:
-            if(!root->left)
-            {
-                ans.push_back(root->data);
-                root= root->right;
-            }
-            // Agar exist krta hai to :
-            else
-            {
-              // Create a Pointer curr and move it right till curr->right Null nhi hota ya equal to root nhi ho jata
-              Node *curr = root->left;
-              while (curr->right&&curr->right!=root)
-              {
-                curr = curr->right;
-              }
-              // If curr->right ==NULL means it is not traversed:
-              if(curr->right==NULL)
-              {
-                ans.push_back(root->data);
-                curr->right = root;
-                root = root->left;
-              }
-              // If curr->right==root which means link exist and if link exist which means it is traversed:
-              else
-              {
-                 curr->right= NULL;
-                 root = root->right;
-              }
-
-            }
-        }
-            return ans;
-    }
-};
-```
-
-*Generated on: 9/30/2026, 6:27:31 PM*
+*Generated on: 10/5/2026, 3:59:37 PM*
