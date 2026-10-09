@@ -21,9 +21,109 @@ false
 - **Expected Time Complexity:** O(n)
 - **Expected Auxiliary Space Complexity:** O(h)
 
-### Accepted Solutions (4)
+### Accepted Solutions (5)
 
 #### Solution 1 (C++)
+
+- **Submitted:** 2026-10-09 08:05:12
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Structure of a Binary Search Tree node
+class Node {
+public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+}; */
+
+class Solution {
+  public:
+ bool checkBST(Node *root , int &prev)
+ {
+     if(root==NULL)
+     return 1;
+     bool l = checkBST(root->left , prev);
+     if(l==0)
+     return 0;
+     else
+     {
+    if(root->data<=prev)
+     return 0;
+     else
+     {
+        prev = root->data;
+     return checkBST(root->right , prev);
+     }
+     }
+     
+     
+ }
+    bool isBST(Node* root) {
+        int prev = INT_MIN;
+        return checkBST(root, prev);
+    }
+    
+};
+```
+
+#### Solution 2 (C++)
+
+- **Submitted:** 2026-10-09 08:04:59
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Structure of a Binary Search Tree node
+class Node {
+public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+}; */
+
+class Solution {
+  public:
+ bool checkBST(Node *root , int &prev)
+ {
+     if(root==NULL)
+     return 1;
+     bool l = checkBST(root->left , prev);
+     if(l==0)
+     return 0;
+     else
+     {
+    if(root->data<=prev)
+     return 0;
+     else
+     {
+        prev = root->data;
+     return checkBST(root->right , prev);
+     }
+     }
+     
+     
+ }
+    bool isBST(Node* root) {
+        int prev = INT_MIN;
+        return checkBST(root, prev);
+    }
+    
+};
+```
+
+#### Solution 3 (C++)
 
 - **Submitted:** 2026-10-08 15:21:33
 - **Status:** Correct
@@ -66,7 +166,7 @@ class Solution {
 };
 ```
 
-#### Solution 2 (C++)
+#### Solution 4 (C++)
 
 - **Submitted:** 2026-10-08 15:21:21
 - **Status:** Correct
@@ -109,7 +209,7 @@ class Solution {
 };
 ```
 
-#### Solution 3 (C++)
+#### Solution 5 (C++)
 
 - **Submitted:** 2026-10-08 15:16:29
 - **Status:** Correct
@@ -154,49 +254,4 @@ class Solution {
 };
 ```
 
-#### Solution 4 (C++)
-
-- **Submitted:** 2026-10-08 15:16:12
-- **Status:** Correct
-- **Marks:** 4
-
-```cpp
-/* Structure of a Binary Search Tree node
-class Node {
-public:
-    int data;
-    Node* left;
-    Node* right;
-
-    Node(int val) {
-        data = val;
-        left = right = nullptr;
-    }
-}; */
-
-class Solution {
-  public:
-  void Inorder(Node *root , vector<int>&arr)
-  {
-      if(root==NULL)
-      return;
-      Inorder(root->left , arr);
-      arr.push_back(root->data);
-      Inorder(root->right , arr);
-  }
-    bool isBST(Node* root) {
-     vector<int>ans;
-     Inorder(root , ans);
-     for(int i = 0 ; i<ans.size()-1 ; i++)
-    {
-        if(ans[i]>=ans[i+1])
-        {
-            return 0;
-        }
-    }
-    return 1;
-    }
-};
-```
-
-*Generated on: 10/8/2026, 3:21:53 PM*
+*Generated on: 10/9/2026, 8:05:42 AM*
