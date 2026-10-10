@@ -32,9 +32,91 @@ root = [16, 12, 18, 10, N, 17, 19], key = 14 Output: falseExplanation: 14 is not
 - **Expected Time Complexity:** O(h)
 - **Expected Auxiliary Space Complexity:** O(1)
 
-### Accepted Solutions (2)
+### Accepted Solutions (4)
 
 #### Solution 1 (C++)
+
+- **Submitted:** 2026-10-10 15:08:07
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Definition for Node
+class Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+  bool searchBST(Node *root , int target)
+  {
+      if(root==NULL)
+      return 0;
+      if(root->data==target)
+      return 1;
+      if(target<root->data)
+      return searchBST(root->left , target);
+      else
+      return searchBST(root->right , target);
+      return searchBST(root->left , target)||searchBST(root->right , target);
+  }
+    bool search(Node* root, int key) {
+        return searchBST(root , key);
+       
+    }
+};
+```
+
+#### Solution 2 (C++)
+
+- **Submitted:** 2026-10-10 15:07:54
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Definition for Node
+class Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+  bool searchBST(Node *root , int target)
+  {
+      if(root==NULL)
+      return 0;
+      if(root->data==target)
+      return 1;
+      if(target<root->data)
+      return searchBST(root->left , target);
+      else
+      return searchBST(root->right , target);
+      return searchBST(root->left , target)||searchBST(root->right , target);
+  }
+    bool search(Node* root, int key) {
+        return searchBST(root , key);
+       
+    }
+};
+```
+
+#### Solution 3 (C++)
 
 - **Submitted:** 2026-10-07 12:02:10
 - **Status:** Correct
@@ -74,7 +156,7 @@ class Solution {
 };
 ```
 
-#### Solution 2 (C++)
+#### Solution 4 (C++)
 
 - **Submitted:** 2026-10-07 12:01:59
 - **Status:** Correct
@@ -114,4 +196,4 @@ class Solution {
 };
 ```
 
-*Generated on: 10/7/2026, 12:02:47 PM*
+*Generated on: 10/10/2026, 3:08:26 PM*
