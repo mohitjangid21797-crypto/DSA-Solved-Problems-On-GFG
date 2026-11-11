@@ -24,6 +24,63 @@ The problem can be found at the following link: [Question Link](https://www.geek
 
 #### Solution 1 (C++)
 
+- **Submitted:** 2026-11-11 17:01:28
+- **Status:** Correct
+- **Marks:** 0
+
+```cpp
+/* Linked List Node Structure
+class Node {
+  public:
+    int data;
+    Node* next;
+    Node(int x){
+        data = x;
+        next = nullptr;
+    }
+};
+*/
+class Compare
+{
+    public:
+    bool operator()(Node*a , Node *b)
+    {
+        return a->data > b->data;
+    }
+};
+
+class Solution {
+  public:
+    Node* mergeKLists(vector<Node*>& arr) {
+        // code here
+        priority_queue<Node* , vector<Node*> , Compare>p(arr.begin() , arr.end());
+        
+        Node *root = NULL;
+        Node *temp = NULL;
+        while(!p.empty())
+        {
+            Node *temp1 = p.top();
+            if(root==NULL)
+            {
+                root= p.top();
+                temp = root;
+            }
+            else
+            {
+                temp->next = p.top();
+                temp = temp->next;
+            }
+            p.pop();
+            if(temp1->next)
+            p.push(temp1->next);
+        }
+        return root;
+    }
+};
+```
+
+#### Solution 2 (C++)
+
 - **Submitted:** 2026-11-11 16:44:12
 - **Status:** Correct
 - **Marks:** 0
@@ -81,7 +138,7 @@ class Solution {
 };
 ```
 
-#### Solution 2 (C++)
+#### Solution 3 (C++)
 
 - **Submitted:** 2026-11-11 16:42:59
 - **Status:** Correct
@@ -140,7 +197,7 @@ class Solution {
 };
 ```
 
-#### Solution 3 (C++)
+#### Solution 4 (C++)
 
 - **Submitted:** 2026-07-02 21:42:29
 - **Status:** Correct
@@ -211,7 +268,7 @@ Node* mergeKLists(vector<Node*>& arr) {
 };
 ```
 
-#### Solution 4 (C++)
+#### Solution 5 (C++)
 
 - **Submitted:** 2026-07-02 21:24:17
 - **Status:** Correct
@@ -275,72 +332,4 @@ Node* mergeKLists(vector<Node*>& arr) {
 };
 ```
 
-#### Solution 5 (C++)
-
-- **Submitted:** 2026-06-27 15:26:17
-- **Status:** Correct
-- **Marks:** 0
-
-```cpp
-/*
-class Node {
-  public:
-    int data;
-    Node* next;
-
-    Node(int x){
-        data = x;
-        next = NULL;
-    }
-};
-*/
-
-class Solution {
-  public:
-  Node *merge(Node *curr1 , Node *curr2)
-  {
-      Node *head = new Node(0);
-      Node *tail = head;
-      while(curr1&&curr2)
-      {
-          if(curr1->data<=curr2->data)
-          {
-              tail->next = curr1;
-              curr1 = curr1->next;
-              tail = tail->next;
-              tail->next = NULL;
-          }
-            else
-          {
-              tail->next = curr2;
-              curr2 = curr2->next;
-              tail = tail->next;
-              tail->next = NULL;
-          }
-      }
-      if(curr1)
-      tail->next = curr1;
-      else
-      tail->next = curr2;
-      return head->next;
-  }
-  void mergesort(vector<Node*>&arr , int start , int end)
-  {
-      if(start>=end)
-      return;
-      int mid = start + (end-start)/2;
-      mergesort(arr , start , mid);
-      mergesort(arr , mid+1 , end);
-      arr[start] = merge(arr[start] , arr[mid+1]);
-  }
-    Node* mergeKLists(vector<Node*>& arr) {
-        // code here
-     mergesort(arr , 0 , arr.size()-1);
-     return arr[0];
-         
-        
-    }
-};
-```
-
-*Generated on: 11/11/2026, 4:59:11 PM*
+*Generated on: 11/11/2026, 5:16:49 PM*
